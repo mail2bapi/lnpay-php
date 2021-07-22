@@ -22,14 +22,7 @@ print_r($response);
  * Get the wallet object which includes current balance.
  * @see https://docs.lnpay.co/wallet/get-balance
  **/
-$response = $lnPayClient->wallet->getBalance();
-print_r($response);
-
-/**
- * Get a list of wallet transactions that have been SETTLED.
- * @see https://docs.lnpay.co/wallet/get-transactions
- **/
-$response = $lnPayClient->wallet->getTransactions();
+$response = $lnPayClient->wallet->getInfo();
 print_r($response);
 
 /**
@@ -55,20 +48,15 @@ print_r($response);
  * Transfer satoshis from source wallet to destination wallet.
  * @see https://docs.lnpay.co/wallet/transfers-between-wallets
  **/
-$response = $lnPayClient->wallet->internalTransfer(array(
+$response = $lnPayClient->wallet->transfer(array(
         "num_satoshis" => 1,
         "Memo" => "SateBack",
     ));
 print_r($response);
 
 /**
- * Generate an LNURL-withdraw link.
- * @see https://docs.lnpay.co/wallet/lnurl-withdraw
+ * Get a list of wallet transactions that have been SETTLED.
+ * @see https://docs.lnpay.co/wallet/get-transactions
  **/
-$response = $lnPayClient->wallet->internalTransfer(array(
-        "num_satoshis" => 1,
-        "Memo" => "SateBack",
-    ));
+$response = $lnPayClient->walletTransaction->getTransactions();
 print_r($response);
-
-
